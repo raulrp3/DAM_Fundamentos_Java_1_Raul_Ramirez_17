@@ -3,14 +3,28 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    public static int validarEntero(Scanner sc) {
-        int numeroValidado;
-        while (!sc.hasNextInt()) {
-            System.out.println("Â¡Introduce un valor numérico entero! ");
-            sc.next();
+    public static double validador(int opcion) {
+        double validado = 0;
+        Scanner sc = new Scanner(System.in);
+        switch (opcion) {
+            case 0: {
+                while (!sc.hasNextInt()) {
+                    System.out.print("¡Por favor introduce un número entero! ");
+                    sc.next();
+                }
+                validado = sc.nextDouble();
+            }
+            break;
+            case 1: {
+                while (!sc.hasNextDouble()) {
+                    System.out.print("¡Por favor introduce un número decimal! ");
+                    sc.next();
+                }
+                validado = sc.nextDouble();
+            }
+            break;
         }
-        numeroValidado = sc.nextInt();
-        return numeroValidado;
+        return validado;
     }
 
     public static boolean validarFecha(int dia, int mes, int año) {
@@ -42,11 +56,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("¡Vamos a calcular la fecha de mañana!");
         System.out.print("Introduce un día: ");
-        dia = validarEntero(sc);
+        dia = (int) validador(0);
         System.out.print("Introduce un mes: ");
-        mes = validarEntero(sc);
+        mes = (int) validador(0);
         System.out.print("Introduce un año: ");
-        año = validarEntero(sc);
+        año = (int) validador(0);
         sc.close();
         esCorrecta = validarFecha(dia, mes, año);
         if (esCorrecta) {
